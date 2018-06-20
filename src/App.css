@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+h2 {
+  letter-spacing: 10px;
+}
+.Lives {
+  color: red;
+  font-size: 48pt;
+}
+.graveyard {
+  font-size: 24pt;
+}
