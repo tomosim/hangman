@@ -14,7 +14,7 @@ class Input extends React.Component {
     );
   }
   handleChange = e => {
-    this.setState({ newWord: e.target.value });
+    this.setState({ newWord: e.target.value.toLowerCase() });
   };
 
   handleClick = e => {
