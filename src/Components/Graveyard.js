@@ -5,20 +5,25 @@ class Graveyard extends React.Component {
   render() {
     return (
       <div id="graveyard">
-        <input onChange={this.handleInputLetter} />
-        <button onClick={this.handleClick}>reset</button>
-        <div>
-          <br />
-          {this.props.usedLetters.map(usedLetter => (
-            <span key={generate()}> {usedLetter} </span>
-          ))}
-        </div>
+        <input className="letterCheck" onChange={this.handleInputLetter} />
+        <button className="reset" onClick={this.handleClick}>
+          reset
+        </button>
+
+        <br />
+        {this.props.usedLetters.map(usedLetter => (
+          <span className="usedLetters" key={generate()}>
+            {" "}
+            {usedLetter}{" "}
+          </span>
+        ))}
       </div>
     );
   }
 
   handleInputLetter = e => {
     const letter = e.target.value;
+
     this.props.setUsedLetters(letter, e);
 
     e.target.value = "";

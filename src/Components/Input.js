@@ -5,9 +5,13 @@ class Input extends React.Component {
 
   render() {
     return (
-      <div className="Input">
-        <input placeholder="enter word" onChange={this.handleChange} />
-        <button className="submit" onClick={this.handleClick}>
+      <div>
+        <input
+          className="input"
+          placeholder="enter word"
+          onChange={this.handleChange}
+        />
+        <button className="Input submit" onClick={this.handleClick}>
           submit
         </button>
       </div>
@@ -18,7 +22,7 @@ class Input extends React.Component {
   };
 
   handleClick = e => {
-    this.props.submit({ word: this.state.newWord });
+    this.props.submit(this.state.newWord);
     this.setState({ newWord: "" });
   };
 }

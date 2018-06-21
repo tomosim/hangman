@@ -15,22 +15,39 @@ class App extends Component {
       <div className="App">
         <h1 className="App-title">hangman</h1>
         {!this.state.word && <Input submit={this.submit} />}
-        {this.state.word && <h2 className="hiddenWord">{this.hiddenWord()}</h2>}
-        {this.state.word && <h2 className="winOrLose">{this.winOrLose()}</h2>}
-        {this.state.word && <Lives livesLeft={this.state.lives} />}
         {this.state.word && (
-          <Graveyard
-            usedLetters={this.state.usedLetters}
-            setUsedLetters={this.setUsedLetters}
-            clearGraveyard={this.clearGraveyard}
-          />
+          <div>
+            <h2 className="hiddenWord shadow">{this.hiddenWord()}</h2>
+          </div>
+        )}
+        {this.state.word && <h2 className="winOrLose">{this.winOrLose()}</h2>}
+
+        {this.state.word && (
+          <div className="graveyard shadow">
+            <Lives livesLeft={this.state.lives} />
+            <Graveyard
+              usedLetters={this.state.usedLetters}
+              setUsedLetters={this.setUsedLetters}
+              clearGraveyard={this.clearGraveyard}
+            />
+          </div>
         )}
       </div>
     );
   }
 
   submit = inputWord => {
-    this.setState(inputWord);
+    let formattedWord = inputWord
+      .split("")
+      .map(letter => {
+        if (/ /.test(letter)) {
+          return "/";
+        } else {
+          return letter;
+        }
+      })
+      .join("");
+    this.setState({ word: formattedWord });
   };
 
   hiddenWord = () => {
